@@ -1,0 +1,5 @@
+config/db.php
+db_test.php
+.env
+.env.*
+!.env.example
