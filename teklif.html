@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Violans Digital teklif ve fiyat hesaplama sayfası.">
+
+    <title>Teklif Al | Violans Digital</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="teklif.js" defer></script>
+</head>
+
+<body>
+
+    <header class="quote-header">
+        <div class="quote-header-inner">
+            <a href="index.html" class="back-home">
+                <span>←</span>
+                Ana Sayfaya Dön
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="pricing-section">
+
+            <div class="section-heading">
+                <span>PROJENİZİ BİRLİKTE HAYATA GEÇİRELİM</span>
+                <h1>Teklifinizi Oluşturun</h1>
+                <p>İhtiyaçlarınıza uygun hizmetleri seçin, projenizin tahmini maliyetini hemen görün.</p>
+            </div>
+
+            <form class="pricing-container" id="offerForm">
+
+                <!-- GİZLİ FORM VERİLERİ -->
+                <input type="hidden" name="selectedServices" id="formServices">
+                <input type="hidden" name="selectedFeatures" id="formFeatures">
+                <input type="hidden" name="estimatedPrice" id="formPrice">
+
+                <!-- SOL TARAF -->
+                <div class="pricing-form">
+
+
+                    <!-- 01 HİZMET SEÇİMİ -->
+                    <div class="wizard-panel" id="serviceStep">
+
+                        <div class="wizard-heading">
+                            <span class="pricing-number">01</span>
+                            <div>
+                                <h3>Hangi hizmete ihtiyacınız var?</h3>
+                                <p>Projeniz için bir veya birden fazla hizmet seçebilirsiniz.</p>
+                            </div>
+                        </div>
+
+                        <div class="pricing-services">
+
+                            <label class="pricing-service">
+                                <input type="checkbox" name="mainService" value="web">
+                                <span>
+                                    <strong>Web Tasarım ve Geliştirme</strong>
+                                    <small>Kurumsal web sitesi, e-ticaret ve özel web projeleri</small>
+                                </span>
+                            </label>
+
+                            <label class="pricing-service">
+                                <input type="checkbox" name="mainService" value="mobile">
+                                <span>
+                                    <strong>Mobil Uygulama</strong>
+                                    <small>Android ve iOS mobil uygulama çözümleri</small>
+                                </span>
+                            </label>
+
+                            <label class="pricing-service">
+                                <input type="checkbox" name="mainService" value="logo">
+                                <span>
+                                    <strong>Logo ve Kurumsal Kimlik</strong>
+                                    <small>Logo, marka kimliği ve kurumsal tasarımlar</small>
+                                </span>
+                            </label>
+
+                            <label class="pricing-service">
+                                <input type="checkbox" name="mainService" value="socialDesign">
+                                <span>
+                                    <strong>Sosyal Medya Tasarımları</strong>
+                                    <small>Hikâye, post, carousel ve Reels tasarımları</small>
+                                </span>
+                            </label>
+
+                            <label class="pricing-service">
+                                <input type="checkbox" name="mainService" value="management">
+                                <span>
+                                    <strong>Sosyal Medya Yönetimi</strong>
+                                    <small>İçerik planlama, paylaşım ve hesap yönetimi</small>
+                                </span>
+                            </label>
+
+                        </div>
+
+                        <button type="button" class="wizard-btn wizard-next" id="toOptions">
+                            Özellikleri Belirle →
+                        </button>
+
+                    </div>
+
+                    <!-- 02 ÖZELLİK SEÇİMİ -->
+                    <div class="wizard-panel step-hidden" id="optionsStep">
+
+                        <div class="wizard-heading">
+                            <span class="pricing-number">02</span>
+                            <div>
+                                <h3>Projenizin özelliklerini belirleyin</h3>
+                                <p>İhtiyaçlarınıza uygun özellikleri seçin.</p>
+                            </div>
+                        </div>
+
+                        <div id="pricingOptions" class="pricing-options"></div>
+
+                        <div class="wizard-controls">
+                            <button type="button" class="wizard-btn wizard-back" id="backToServices">
+                                ← Geri
+                            </button>
+
+                            <button type="button" class="wizard-btn wizard-next" id="toCustomer">
+                                Devam Et →
+                            </button>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 03 MÜŞTERİ BİLGİLERİ -->
+                    <div class="wizard-panel step-hidden" id="customerStep">
+
+                        <div class="wizard-heading">
+                            <span class="pricing-number">03</span>
+                            <div>
+                                <h3>Projeniz hakkında bilgi verin</h3>
+                                <p>Teklifinizi size ulaştırabilmemiz için bilgilerinizi girin.</p>
+                            </div>
+                        </div>
+
+                        <div class="pricing-inputs" id="customerInputs">
+
+
+
+
+                            <input type="text" id="customerName" name="customerName" placeholder="Adınız Soyadınız"
+                                required>
+
+                            <input type="text" id="companyName" name="companyName" placeholder="İşletme / Marka Adı">
+
+                            <input type="email" id="customerEmail" name="customerEmail" placeholder="E-posta Adresiniz"
+                                required>
+
+                            <input type="tel" id="customerPhone" name="customerPhone" placeholder="Telefon Numaranız"
+                                required>
+
+                            <textarea id="projectNote" name="projectNote"
+                                placeholder="Projeniz hakkında eklemek istedikleriniz..."></textarea>
+                        </div>
+
+                        <div class="wizard-controls">
+                            <button type="button" class="wizard-btn wizard-back" id="backToOptions">
+                                ← Geri
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- SAĞ TARAF: TEKLİF ÖZETİ -->
+                <aside class="pricing-summary">
+
+                    <span class="pricing-summary-label">YOUR PROJECT</span>
+
+                    <h3>Teklif Özeti</h3>
+
+                    <div id="selectedService">
+                        Henüz hizmet seçilmedi.
+                    </div>
+
+                    <div id="selectedFeatures">
+                        Henüz özellik seçilmedi.
+                    </div>
+
+                    <div class="pricing-total">
+                        <span>Tahmini Proje Bedeli</span>
+                        <strong id="totalPrice">0 TL</strong>
+                    </div>
+
+                    <p>
+                        Bu tutar tahmini fiyatlandırmadır.
+                        Projenizin kapsamına göre nihai teklif belirlenir.
+                    </p>
+
+                    <button type="submit" id="sendOffer" class="pricing-submit">
+                        Teklif Talebi Oluştur ↗
+                    </button>
+
+                </aside>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <div class="custom-alert" id="customAlert">
+    <div class="custom-alert-icon" id="customAlertIcon">!</div>
+    <div class="custom-alert-content">
+        <strong id="customAlertTitle">Bilgilendirme</strong>
+        <p id="customAlertMessage"></p>
+    </div>
+    <button type="button" id="closeCustomAlert">×</button>
+</div>
+
+</body>
+
+</html>
